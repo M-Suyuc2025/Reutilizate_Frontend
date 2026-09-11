@@ -37,3 +37,39 @@
   border-bottom: 2px solid var(--verde-claro);
   padding-bottom: 2px;
 }
+
+.navbar-auth {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-auth a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-auth a:hover {
+  color: var(--verde-claro);
+}
+
+.navbar-auth a.active {
+  color: var(--verde-claro);
+}
+
+.navbar-auth .btn-registro {
+  background-color: var(--naranja);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+.navbar-auth .btn-registro:hover {
+  background-color: var(--verde-claro);
+  color: #ffffff;
+}
