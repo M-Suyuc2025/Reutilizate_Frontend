@@ -1,40 +1,42 @@
-<section class="resultados-container">
-  <!-- Tarjeta de Resumen del Material Identificado -->
-  <div class="material-card">
-    <div class="material-badge">Material Identificado</div>
-    <h2>Botella de Plástico (PET)</h2>
-    <p class="material-desc">
-      El plástico PET es altamente reciclable. Reutilizarlo reduce la contaminación ambiental y permite crear objetos funcionales para el hogar.
-    </p>
-  </div>
+<section class="resultados-container" *ngIf="resultado">
+  <div class="resultados-grid-layout">
+    <!-- COLUMNA IZQUIERDA: Textos y Resultados -->
+    <div class="columna-izquierda">
+      <div class="resultado-header">
+        <h2>Resultado del Análisis</h2>
+        <p>Identificamos tu residuo e ideamos sugerencias para su reutilización.</p>
+      </div>
 
-  <!-- Título de Proyectos -->
-  <div class="section-title">
-    <h3>Proyectos Sugeridos de Reutilización</h3>
-    <p>Elige una idea para ver el tutorial paso a paso</p>
-  </div>
+      <div class="material-card">
+        <span class="badge">Material Detectado</span>
+        <h3>{{ resultado.material }}</h3>
+        <p>{{ resultado.descripcion }}</p>
+      </div>
 
-  <!-- Cuadrícula de Ideas / Proyectos -->
-  <div class="projects-grid">
-    <div class="project-card">
-      <div class="project-icon">🌱</div>
-      <h4>Macetero Colgante</h4>
-      <p>Transforma tu botella en una maceta ecológica ideal para plantas pequeñas o hierbas.</p>
-      <span class="difficulty easy">Dificultad: Fácil</span>
+      <div class="proyectos-seccion">
+        <h3>Proyectos Recomendados</h3>
+        <div class="proyectos-grid">
+          <div class="proyecto-card" *ngFor="let p of resultado.proyectos">
+            <div class="proyecto-header">
+              <h4>{{ p.nombre }}</h4>
+              <span class="dificultad">{{ p.dificultad }}</span>
+            </div>
+            <p>{{ p.descripcion }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-secondary" (click)="volverACapturar()">
+          Escanear otro objeto
+        </button>
+      </div>
     </div>
 
-    <div class="project-card">
-      <div class="project-icon">✏️</div>
-      <h4>Organizador de Escritorio</h4>
-      <p>Corta y decora la base de la botella para guardar lápices, pinceles o accesorios.</p>
-      <span class="difficulty easy">Dificultad: Fácil</span>
-    </div>
-
-    <div class="project-card">
-      <div class="project-icon">🕊️</div>
-      <h4>Comedero para Aves</h4>
-      <p>Crea un dispensador de semillas de exterior reutilizando una botella y cucharas de madera.</p>
-      <span class="difficulty medium">Dificultad: Media</span>
+    <div class="columna-derecha" *ngIf="resultado.imagen">
+      <div class="imagen-box">
+        <img [src]="resultado.imagen" alt="Foto del residuo" class="imagen-escaneada" />
+      </div>
     </div>
   </div>
 </section>

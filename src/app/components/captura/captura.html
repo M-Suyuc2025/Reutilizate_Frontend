@@ -5,16 +5,43 @@
   </div>
 
   <div class="upload-card">
-    <div class="drop-zone">
+    <div 
+      class="drop-zone" 
+      *ngIf="!imagenPreview"
+      (dragover)="onDragOver($event)" 
+      (drop)="onDrop($event)"
+    >
       <div class="upload-icon">📷</div>
       <p class="drop-text">Arrastra y suelta tu imagen aquí</p>
       <span class="or-text">o</span>
-      <label for="file-input" class="btn-file">Seleccionar Archivo</label>
-      <input type="file" id="file-input" accept="image/*" class="file-input" />
+      
+      <label for="fileInput" class="btn-file">
+        Seleccionar Archivo
+      </label>
+      <input 
+        type="file" 
+        id="fileInput" 
+        class="file-input" 
+        accept="image/*" 
+        (change)="onFileSelected($event)"
+      />
+    </div>
+
+    <div class="preview-container" *ngIf="imagenPreview">
+      <img [src]="imagenPreview" alt="Vista previa del residuo" class="image-preview" />
+      <button class="btn-file change-file" (click)="limpiarImagen()">
+        Cambiar imagen
+      </button>
     </div>
 
     <div class="actions">
-      <button class="btn-primary" disabled>Analizar Imagen</button>
+      <button 
+        class="btn-primary" 
+        [disabled]="!archivoSeleccionado || cargando"
+        (click)="analizarImagen()"
+      >
+        {{ cargando ? 'Analizando...' : 'Analizar Imagen' }}
+      </button>
     </div>
   </div>
 </section>
