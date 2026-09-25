@@ -1,9 +1,16 @@
 import { Component } from '@angular/core';
 
 @Component({
-  imports: [],
   selector: 'app-resultados',
-  styleUrl: './resultados.css',
+  standalone: true,
+  imports: [],
   templateUrl: './resultados.html',
+  styleUrl: './resultados.css',
 })
-export class Resultados {}
+export class Resultados {
+
+  resultado = {
+    material: 'Botella de Plástico (PET)',
+    descripcion: 'El plástico PET es altamente reciclable. Reutilizarlo reduce la contaminación ambiental y permite crear objetos funcionales para el hogar.'
+  };
+}
