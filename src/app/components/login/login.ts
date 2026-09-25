@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,7 @@ export class Login {
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
+    private authService: AuthService,
     private router: Router
   ) {
     this.loginForm = this.fb.group({
@@ -38,7 +40,7 @@ export class Login {
 
     this.apiService.login(this.loginForm.value).subscribe({
       next: (respuesta) => {
-        console.log('Login exitoso:', respuesta);
+        this.authService.guardarSesion(respuesta.token, respuesta.usuario);
         this.cargando = false;
         this.router.navigate(['/']);
       },

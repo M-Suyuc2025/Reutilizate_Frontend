@@ -1,19 +1,33 @@
-.navbar {
+.navbar-header {
+  width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: var(--verde-principal);
   padding: 1rem 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.logo-text {
+.logo {
   color: #ffffff;
   font-size: 1.5rem;
   font-weight: bold;
+  text-decoration: none;
 }
 
-.navbar-links {
+.logo:hover {
+  color: #a7f3d0;
+}
+
+.nav-links {
   list-style: none;
   display: flex;
   gap: 1.5rem;
@@ -21,21 +35,25 @@
   padding: 0;
 }
 
-.navbar-links a {
-  color: #ffffff;
+.nav-links li a {
+  color: #e2e8f0;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s ease;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
 }
 
-.navbar-links a:hover {
-  color: var(--verde-claro);
+.nav-links li a:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.12);
 }
 
-.navbar-links a.active {
-  color: var(--verde-claro);
-  border-bottom: 2px solid var(--verde-claro);
-  padding-bottom: 2px;
+.nav-links li a.active {
+  color: #ffffff;
+  background-color: #2e7d32;
+  font-weight: 600;
 }
 
 .navbar-auth {
@@ -58,18 +76,12 @@
   color: var(--verde-claro);
 }
 
-.navbar-auth a.active {
-  color: var(--verde-claro);
-}
-
 .navbar-auth .btn-registro {
   background-color: var(--naranja);
   padding: 0.5rem 1rem;
   border-radius: 6px;
-  color: #ffffff;
 }
 
 .navbar-auth .btn-registro:hover {
   background-color: var(--verde-claro);
-  color: #ffffff;
 }
