@@ -1,20 +1,21 @@
 <section class="resultados-container">
-  <!-- Tarjeta de Resumen del Material Identificado -->
+
   <div class="material-card">
-    <div class="material-badge">Material Identificado</div>
-    <h2>Botella de Plástico (PET)</h2>
+    <div class="badges-container">
+      <span class="badge">Material Detectado</span>
+      <span class="badge-puntos">+50 Puntos Ganados</span>
+    </div>
+    <h2>{{ resultado?.material || 'Botella de Plástico (PET)' }}</h2>
     <p class="material-desc">
-      El plástico PET es altamente reciclable. Reutilizarlo reduce la contaminación ambiental y permite crear objetos funcionales para el hogar.
+      {{ resultado?.descripcion || 'El plástico PET es altamente reciclable. Reutilizarlo reduce la contaminación ambiental y permite crear objetos funcionales para el hogar.' }}
     </p>
   </div>
 
-  <!-- Título de Proyectos -->
   <div class="section-title">
     <h3>Proyectos Sugeridos de Reutilización</h3>
     <p>Elige una idea para ver el tutorial paso a paso</p>
   </div>
 
-  <!-- Cuadrícula de Ideas / Proyectos -->
   <div class="projects-grid">
     <div class="project-card">
       <div class="project-icon">🌱</div>
