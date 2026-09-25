@@ -1,0 +1,77 @@
+.canje-container {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.canje-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.canje-header h2 {
+  color: #2e7d32;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.canje-header p {
+  color: #64748b;
+}
+
+.recompensas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.recompensa-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.8rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.recompensa-badge {
+  background: #fef3c7;
+  color: #d97706;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  align-self: flex-start;
+  margin-bottom: 1rem;
+}
+
+.recompensa-card h3 {
+  color: #1e293b;
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.recompensa-card p {
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+}
+
+.btn-canjear {
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-canjear:hover {
+  background-color: #1b5e20;
+}
