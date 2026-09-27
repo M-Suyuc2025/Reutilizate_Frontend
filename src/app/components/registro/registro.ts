@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api';
+import { AuthService } from '../../services/auth';
 
-// Validador personalizado: confirma que password y confirmarPassword coincidan
 function passwordsIgualesValidator(control: AbstractControl): ValidationErrors | null {
   const password = control.get('password')?.value;
   const confirmarPassword = control.get('confirmarPassword')?.value;
@@ -26,6 +26,7 @@ export class Registro {
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
+    private authService: AuthService,
     private router: Router
   ) {
     this.registroForm = this.fb.group({
@@ -49,7 +50,7 @@ export class Registro {
 
     this.apiService.registrar({ nombre, email, password }).subscribe({
       next: (respuesta) => {
-        console.log('Registro exitoso:', respuesta);
+        this.authService.guardarSesion(respuesta.token, respuesta.usuario);
         this.cargando = false;
         this.router.navigate(['/']);
       },

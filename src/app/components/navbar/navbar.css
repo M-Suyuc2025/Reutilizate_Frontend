@@ -1,5 +1,4 @@
 .navbar-header {
-  background-color: #1b4d3e;
   width: 100%;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
   position: sticky;
@@ -10,18 +9,18 @@
 .navbar-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--verde-principal);
+  padding: 1rem 2rem;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 800;
   color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: bold;
   text-decoration: none;
-  letter-spacing: -0.5px;
 }
 
 .logo:hover {
@@ -31,7 +30,6 @@
 .nav-links {
   list-style: none;
   display: flex;
-  align-items: center;
   gap: 1.5rem;
   margin: 0;
   padding: 0;
@@ -56,4 +54,34 @@
   color: #ffffff;
   background-color: #2e7d32;
   font-weight: 600;
+}
+
+.navbar-auth {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-auth a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-auth a:hover {
+  color: var(--verde-claro);
+}
+
+.navbar-auth .btn-registro {
+  background-color: var(--naranja);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.navbar-auth .btn-registro:hover {
+  background-color: var(--verde-claro);
 }
