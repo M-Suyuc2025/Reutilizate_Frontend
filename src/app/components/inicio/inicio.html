@@ -8,6 +8,7 @@
 
 <section class="features-container">
   <h2>¿Cómo funciona Reutilízate?</h2>
+
   <div class="cards-grid">
     <div class="card">
       <div class="icon">📷</div>
@@ -24,5 +25,10 @@
       <h3>3. Reutiliza</h3>
       <p>Obtén proyectos y manualidades paso a paso adaptados a tu objeto.</p>
     </div>
+  </div>
+
+  <div class="registro-banner" *ngIf="!estaLogueado">
+    <span class="banner-icon">💡</span>
+    <p><strong>¡Sácale el máximo provecho!</strong> Regístrate o inicia sesión para comenzar a acumular puntos por tus reciclajes y canjearlos por premios.</p>
   </div>
 </section>

@@ -79,3 +79,64 @@
   font-size: 0.95rem;
   line-height: 1.4;
 }
+
+.registro-banner {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #2e7d32;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  max-width: 700px;
+  margin: 1.5rem auto 2.5rem auto; /* Centra el bloque horizontalmente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.registro-banner span {
+  font-size: 1.3rem;
+}
+
+.registro-banner p {
+  margin: 0;
+  color: #334155;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.registro-banner strong {
+  color: #1b4d3e;
+}
+
+.registro-banner {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #2e7d32;
+  border-radius: 12px;
+  padding: 1.2rem 1.8rem;
+  max-width: 750px;
+  margin: 3rem auto 1rem auto; /* Le da espacio respecto a las tarjetas */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.banner-icon {
+  font-size: 1.4rem;
+}
+
+.registro-banner p {
+  margin: 0;
+  color: #334155;
+  font-size: 0.95rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.registro-banner strong {
+  color: #1b4d3e;
+}

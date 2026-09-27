@@ -8,21 +8,46 @@
       </div>
 
       <div class="material-card">
-        <span class="badge">Material Detectado</span>
-        <h3>{{ resultado.material }}</h3>
-        <p>{{ resultado.descripcion }}</p>
+        <div class="badges-container">
+          <span class="badge">Material Detectado</span>
+          <span class="badge-puntos">+50 Puntos Ganados</span>
+        </div>
+        <h3>{{ resultado.material || 'Botella de Plástico (PET)' }}</h3>
+        <p class="material-desc">
+          {{ resultado.descripcion || 'El plástico PET es altamente reciclable. Reutilizarlo reduce la contaminación ambiental y permite crear objetos funcionales para el hogar.' }}
+        </p>
       </div>
 
       <div class="proyectos-seccion">
         <h3>Proyectos Recomendados</h3>
         <div class="proyectos-grid">
-          <div class="proyecto-card" *ngFor="let p of resultado.proyectos">
-            <div class="proyecto-header">
-              <h4>{{ p.nombre }}</h4>
-              <span class="dificultad">{{ p.dificultad }}</span>
+          <!-- Si vienen proyectos dinámicos desde la captura -->
+          <ng-container *ngIf="resultado.proyectos && resultado.proyectos.length > 0; else proyectosEstaticos">
+            <div class="proyecto-card" *ngFor="let p of resultado.proyectos">
+              <div class="proyecto-header">
+                <h4>{{ p.nombre }}</h4>
+                <span class="dificultad">{{ p.dificultad }}</span>
+              </div>
+              <p>{{ p.descripcion }}</p>
             </div>
-            <p>{{ p.descripcion }}</p>
-          </div>
+          </ng-container>
+
+          <ng-template #proyectosEstaticos>
+            <div class="proyecto-card">
+              <div class="proyecto-header">
+                <h4>🌱 Macetero Colgante</h4>
+                <span class="dificultad fácil">Fácil</span>
+              </div>
+              <p>Transforma tu botella en una maceta ecológica ideal para plantas pequeñas o hierbas.</p>
+            </div>
+            <div class="proyecto-card">
+              <div class="proyecto-header">
+                <h4>✏️ Organizador de Escritorio</h4>
+                <span class="dificultad fácil">Fácil</span>
+              </div>
+              <p>Corta la base de la botella para crear un contenedor útil para lápices y accesorios.</p>
+            </div>
+          </ng-template>
         </div>
       </div>
 

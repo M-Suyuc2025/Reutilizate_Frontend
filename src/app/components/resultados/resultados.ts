@@ -6,10 +6,9 @@ import { Router } from '@angular/router';
   selector: 'app-resultados',
   standalone: true,
   imports: [CommonModule],
-  styleUrl: './resultados.css',
   templateUrl: './resultados.html',
+  styleUrl: './resultados.css',
 })
-
 export class Resultados implements OnInit {
   resultado: any = null;
 
@@ -21,12 +20,11 @@ export class Resultados implements OnInit {
   }
 
   ngOnInit(): void {
-    // Lee el estado enviado desde la pantalla de Captura
+    
     if (!this.resultado && history.state?.resultado) {
       this.resultado = history.state.resultado;
     }
 
-    // Si alguien entra a /resultados directamente sin haber subido foto, lo redirige a /captura
     if (!this.resultado) {
       this.router.navigate(['/captura']);
     }

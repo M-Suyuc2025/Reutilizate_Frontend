@@ -1,0 +1,87 @@
+.puntos-container {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.puntos-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.puntos-header h2 {
+  color: #2e7d32;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.puntos-header p {
+  color: #64748b;
+}
+
+.puntos-card-total {
+  background: linear-gradient(135deg, #2e7d32, #1b5e20);
+  color: white;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(46, 125, 50, 0.2);
+  margin-bottom: 2.5rem;
+}
+
+.label-total {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+.total-numero {
+  font-size: 3.2rem;
+  margin: 0.5rem 0 0;
+  font-weight: 800;
+}
+
+.total-numero span {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.historial-seccion h3 {
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.historial-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.historial-item {
+  background: white;
+  padding: 1.2rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-info strong {
+  display: block;
+  color: #1e293b;
+}
+
+.item-info small {
+  color: #94a3b8;
+}
+
+.puntos-ganados {
+  font-weight: 700;
+  color: #2e7d32;
+  background: #e8f5e9;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+}
