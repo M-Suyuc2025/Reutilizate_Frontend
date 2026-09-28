@@ -1,41 +1,68 @@
-<section class="resultados-container">
-
-  <div class="material-card">
-    <div class="badges-container">
-      <span class="badge">Material Detectado</span>
-      <span class="badge-puntos">+50 Puntos Ganados</span>
-    </div>
-    <h2>{{ resultado?.material || 'Botella de Plástico (PET)' }}</h2>
-    <p class="material-desc">
-      {{ resultado?.descripcion || 'El plástico PET es altamente reciclable. Reutilizarlo reduce la contaminación ambiental y permite crear objetos funcionales para el hogar.' }}
-    </p>
+<section class="resultados-container" *ngIf="resultado">
+  <div class="resultado-header">
+    <h2>Resultado del Análisis</h2>
+    <p>Identificamos tu residuo e ideamos sugerencias para su reutilización.</p>
   </div>
 
-  <div class="section-title">
-    <h3>Proyectos Sugeridos de Reutilización</h3>
-    <p>Elige una idea para ver el tutorial paso a paso</p>
-  </div>
-
-  <div class="projects-grid">
-    <div class="project-card">
-      <div class="project-icon">🌱</div>
-      <h4>Macetero Colgante</h4>
-      <p>Transforma tu botella en una maceta ecológica ideal para plantas pequeñas o hierbas.</p>
-      <span class="difficulty easy">Dificultad: Fácil</span>
+  <div class="resultados-grid-layout">
+    <!-- COLUMNA IZQUIERDA: Imagen del residuo -->
+    <div class="columna-izquierda" *ngIf="resultado.imagen">
+      <div class="imagen-box">
+        <img [src]="resultado.imagen" alt="Foto del residuo" class="imagen-escaneada" />
+        <span class="badge-imagen">Objeto Analizado</span>
+      </div>
     </div>
+    
+    <div class="columna-derecha">
+      <div class="material-card">
+        <div class="badges-container">
+          <span class="badge">Material Detectado</span>
+          <span class="badge-puntos">+50 Puntos Ganados</span>
+        </div>
+        <h3>{{ resultado.material || 'Botella de Plástico (PET)' }}</h3>
+        <p class="material-desc">
+          {{ resultado.descripcion || 'El plástico PET es altamente reciclable. Reutilizarlo reduce la contaminación ambiental y permite crear objetos funcionales para el hogar.' }}
+        </p>
+      </div>
 
-    <div class="project-card">
-      <div class="project-icon">✏️</div>
-      <h4>Organizador de Escritorio</h4>
-      <p>Corta y decora la base de la botella para guardar lápices, pinceles o accesorios.</p>
-      <span class="difficulty easy">Dificultad: Fácil</span>
-    </div>
+      <div class="proyectos-seccion">
+        <h3>Proyectos Recomendados</h3>
+        <div class="proyectos-grid">
+          <!-- Si vienen proyectos dinámicos desde la captura -->
+          <ng-container *ngIf="resultado.proyectos && resultado.proyectos.length > 0; else proyectosEstaticos">
+            <div class="proyecto-card" *ngFor="let p of resultado.proyectos">
+              <div class="proyecto-header">
+                <h4>{{ p.nombre }}</h4>
+                <span class="dificultad">{{ p.dificultad }}</span>
+              </div>
+              <p>{{ p.descripcion }}</p>
+            </div>
+          </ng-container>
 
-    <div class="project-card">
-      <div class="project-icon">🕊️</div>
-      <h4>Comedero para Aves</h4>
-      <p>Crea un dispensador de semillas de exterior reutilizando una botella y cucharas de madera.</p>
-      <span class="difficulty medium">Dificultad: Media</span>
+          <ng-template #proyectosEstaticos>
+            <div class="proyecto-card">
+              <div class="proyecto-header">
+                <h4>🌱 Macetero Colgante</h4>
+                <span class="dificultad fácil">Fácil</span>
+              </div>
+              <p>Transforma tu botella en una maceta ecológica ideal para plantas pequeñas o hierbas.</p>
+            </div>
+            <div class="proyecto-card">
+              <div class="proyecto-header">
+                <h4>✏️ Organizador de Escritorio</h4>
+                <span class="dificultad fácil">Fácil</span>
+              </div>
+              <p>Corta la base de la botella para crear un contenedor útil para lápices y accesorios.</p>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-secondary" (click)="volverACapturar()">
+          Escanear otro objeto
+        </button>
+      </div>
     </div>
   </div>
 </section>

@@ -2,28 +2,30 @@
   <div class="canje-header">
     <h2>Catálogo de Recompensas</h2>
     <p>Canjea tus puntos acumulados por premios e incentivos ecológicos.</p>
+    
+    <div class="puntos-banner">
+      <span>Puntos Disponibles:</span>
+      <strong>{{ puntosUsuario }} pts</strong>
+    </div>
   </div>
 
   <div class="recompensas-grid">
-    <div class="recompensa-card">
-      <div class="recompensa-badge">50 Puntos</div>
-      <h3>Café Americano Gratis</h3>
-      <p>Canjeable en la cafetería principal presentando tu código de confirmación.</p>
-      <button class="btn-canjear">Canjear Premio</button>
-    </div>
+    <div class="recompensa-card" *ngFor="let recompensa of recompensas">
+      <div class="card-top">
+        <span class="recompensa-badge">{{ recompensa.puntos }} Puntos</span>
+        <span class="categoria-tag">{{ recompensa.categoria }}</span>
+      </div>
+      
+      <h3>{{ recompensa.titulo }}</h3>
+      <p>{{ recompensa.descripcion }}</p>
 
-    <div class="recompensa-card">
-      <div class="recompensa-badge">100 Puntos</div>
-      <h3>Descuento Eco-Tienda</h3>
-      <p>15% de descuento en la compra de artículos reciclables seleccionados.</p>
-      <button class="btn-canjear">Canjear Premio</button>
-    </div>
-
-    <div class="recompensa-card">
-      <div class="recompensa-badge">200 Puntos</div>
-      <h3>Kit de Semillas Orgánicas</h3>
-      <p>Un paquete completo de semillas para iniciar tu propio huerto urbano.</p>
-      <button class="btn-canjear">Canjear Premio</button>
+      <button 
+        class="btn-canjear" 
+        (click)="canjearPremio(recompensa)"
+        [disabled]="puntosUsuario < recompensa.puntos"
+        [class.disabled]="puntosUsuario < recompensa.puntos">
+        {{ puntosUsuario >= recompensa.puntos ? 'Canjear Premio' : 'Puntos Insuficientes' }}
+      </button>
     </div>
   </div>
 </section>

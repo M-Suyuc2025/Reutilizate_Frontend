@@ -1,87 +1,178 @@
 .puntos-container {
-  max-width: 800px;
-  margin: 3rem auto;
+  max-width: 1000px;
+  margin: 2rem auto;
   padding: 0 1.5rem;
   font-family: system-ui, -apple-system, sans-serif;
+  color: #1a2e22;
 }
 
-.puntos-header {
-  text-align: center;
+/* Card de Perfil */
+.card-perfil {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   margin-bottom: 2rem;
+  border: 1px solid #e2e8f0;
 }
 
-.puntos-header h2 {
-  color: #2e7d32;
+.usuario-info h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.8rem;
+}
+
+.nivel-tag {
+  display: inline-block;
+  background-color: #e6f4ea;
+  color: #137333;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.stat-card {
+  background: #f8faf9;
+  padding: 1.2rem;
+  border-radius: 12px;
+  border: 1px solid #edf2f0;
+}
+
+.stat-card.destacado {
+  background: #1b4332;
+  color: #ffffff;
+  border: none;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.stat-value {
+  margin: 0;
   font-size: 2rem;
   font-weight: 700;
 }
 
-.puntos-header p {
-  color: #64748b;
+.pts, .unit {
+  font-size: 1rem;
+  font-weight: 400;
 }
 
-.puntos-card-total {
-  background: linear-gradient(135deg, #2e7d32, #1b5e20);
-  color: white;
-  border-radius: 16px;
-  padding: 2rem;
-  text-align: center;
-  box-shadow: 0 10px 20px rgba(46, 125, 50, 0.2);
+/* Insignias */
+.seccion {
   margin-bottom: 2.5rem;
 }
 
-.label-total {
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  opacity: 0.9;
-}
-
-.total-numero {
-  font-size: 3.2rem;
-  margin: 0.5rem 0 0;
-  font-weight: 800;
-}
-
-.total-numero span {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-.historial-seccion h3 {
-  color: #1e293b;
+.seccion h3 {
+  font-size: 1.3rem;
   margin-bottom: 1rem;
 }
 
-.historial-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+.insignias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
 }
 
-.historial-item {
-  background: white;
-  padding: 1.2rem;
+.insignia-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #ffffff;
+  padding: 1rem;
   border-radius: 12px;
   border: 1px solid #e2e8f0;
+}
+
+.insignia-card.bloqueada {
+  opacity: 0.5;
+  filter: grayscale(100%);
+  background: #f1f5f9;
+}
+
+.insignia-icono {
+  font-size: 2rem;
+}
+
+.insignia-info h4 {
+  margin: 0 0 0.2rem 0;
+  font-size: 1rem;
+}
+
+.insignia-info p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+/* Historial */
+.header-historial {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
-.item-info strong {
-  display: block;
-  color: #1e293b;
+.btn-nuevo-escaneo {
+  color: #2d6a4f;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
-.item-info small {
+.btn-nuevo-escaneo:hover {
+  text-decoration: underline;
+}
+
+.historial-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.historial-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.item-main {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.item-icono {
+  font-size: 1.5rem;
+}
+
+.item-main h4 {
+  margin: 0 0 0.2rem 0;
+  font-size: 0.95rem;
+}
+
+.item-fecha {
+  font-size: 0.75rem;
   color: #94a3b8;
 }
 
-.puntos-ganados {
+.item-puntos {
+  color: #2d6a4f;
   font-weight: 700;
-  color: #2e7d32;
-  background: #e8f5e9;
-  padding: 0.4rem 0.8rem;
-  border-radius: 8px;
+  font-size: 0.95rem;
 }
