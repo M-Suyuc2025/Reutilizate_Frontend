@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { AuthService } from '../../services/auth';
 
 @Component({
@@ -10,11 +10,12 @@ import { AuthService } from '../../services/auth';
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
-export class Navbar {
+export class NavbarComponent {
 
-  constructor(private authService: AuthService) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
-  get estaLogueado(): boolean {
-    return this.authService.estaLogueado();
+  onCerrarSesion(): void {
+    this.authService.cerrarSesion();
+    this.router.navigate(['/login']);
   }
 }

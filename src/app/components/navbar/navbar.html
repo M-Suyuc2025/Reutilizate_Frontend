@@ -1,16 +1,23 @@
-<header class="navbar-header">
-  <nav class="navbar-container">
-    <a routerLink="/" class="logo">Reutilízate</a>
-    <ul class="nav-links">
-      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a></li>
-      <li><a routerLink="/captura" routerLinkActive="active">Capturar Imagen</a></li>
-      <li *ngIf="estaLogueado"><a routerLink="/resultados" routerLinkActive="active">Resultados</a></li>
-      <li *ngIf="estaLogueado"><a routerLink="/puntos" routerLinkActive="active">Mis Puntos</a></li>
-      <li *ngIf="estaLogueado"><a routerLink="/canje" routerLinkActive="active">Canjear Rewards</a></li>
-    </ul>
-    <ul class="navbar-auth" *ngIf="!estaLogueado">
-      <li><a routerLink="/login" routerLinkActive="active">Iniciar sesión</a></li>
-      <li><a routerLink="/registro" routerLinkActive="active" class="btn-registro">Registrarse</a></li>
-    </ul>
-  </nav>
-</header>
+<nav class="navbar">
+  <div class="logo">
+    <a routerLink="/inicio">Reutilízate</a>
+  </div>
+
+  <ul class="nav-links">
+    <li><a routerLink="/inicio" routerLinkActive="active">Inicio</a></li>
+    <li><a routerLink="/captura" routerLinkActive="active">Capturar Imagen</a></li>
+
+    <!-- Si SÍ está logueado -->
+    <ng-container *ngIf="authService.estaLogueado()">
+      <li><a routerLink="/puntos" routerLinkActive="active">Mis Puntos</a></li>
+      <li><a routerLink="/canje" routerLinkActive="active">Canjear Rewards</a></li>
+      <li><button class="btn-logout" (click)="onCerrarSesion()">Cerrar Sesión</button></li>
+    </ng-container>
+
+    <!-- Si NO está logueado -->
+    <ng-container *ngIf="!authService.estaLogueado()">
+      <li><a routerLink="/login" class="btn-login">Iniciar Sesión</a></li>
+      <li><a routerLink="/registro" class="btn-registro">Registrarse</a></li>
+    </ng-container>
+  </ul>
+</nav>

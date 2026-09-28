@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +12,10 @@ import { Router } from '@angular/router';
 export class Resultados implements OnInit {
   resultado: any = null;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state && navigation.extras.state['resultado']) {
       this.resultado = navigation.extras.state['resultado'];
@@ -20,9 +23,10 @@ export class Resultados implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    if (!this.resultado && history.state?.resultado) {
-      this.resultado = history.state.resultado;
+    if (!this.resultado && isPlatformBrowser(this.platformId)) {
+      if (history.state?.resultado) {
+        this.resultado = history.state.resultado;
+      }
     }
 
     if (!this.resultado) {

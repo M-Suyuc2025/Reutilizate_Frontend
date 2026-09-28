@@ -1,32 +1,59 @@
-<section class="puntos-container">
-  <div class="puntos-header">
-    <h2>Mi Historial de Puntos</h2>
-    <p>Consulta tus puntos acumulados por reciclar y reutilizar residuos.</p>
-  </div>
-
-  <div class="puntos-card-total">
-    <span class="label-total">Puntos Totales Disponibles</span>
-    <h3 class="total-numero">150 <span>pts</span></h3>
-  </div>
-
-  <div class="historial-seccion">
-    <h3>Últimas actividades</h3>
-    <div class="historial-list">
-      <div class="historial-item">
-        <div class="item-info">
-          <strong>Botella de Plástico PET</strong>
-          <small>Escaneado hoy - 10:30 AM</small>
-        </div>
-        <span class="puntos-ganados">+50 pts</span>
+<div class="puntos-container">
+  
+  <div class="card-perfil">
+    <div class="usuario-info">
+      <h2>Hola, {{ usuario.nombre }} 👋</h2>
+      <span class="nivel-tag">{{ usuario.nivel }}</span>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card destacado">
+        <span class="stat-label">Puntos Acumulados</span>
+        <h3 class="stat-value">{{ usuario.puntosTotales }} <span class="pts">PTS</span></h3>
       </div>
-
-      <div class="historial-item">
-        <div class="item-info">
-          <strong>Caja de Cartón</strong>
-          <small>Escaneado ayer - 4:15 PM</small>
-        </div>
-        <span class="puntos-ganados">+100 pts</span>
+      <div class="stat-card">
+        <span class="stat-label">Material Reciclado</span>
+        <h3 class="stat-value">{{ usuario.impactoKg }} <span class="unit">kg</span></h3>
       </div>
     </div>
   </div>
-</section>
+
+  <!-- Sección de Logros e Insignias -->
+  <div class="seccion">
+    <h3>Tus Insignias</h3>
+    <div class="insignias-grid">
+      <div 
+        class="insignia-card" 
+        *ngFor="let item of insignias"
+        [class.bloqueada]="!item.obtenida"
+      >
+        <span class="insignia-icono">{{ item.icono }}</span>
+        <div class="insignia-info">
+          <h4>{{ item.titulo }}</h4>
+          <p>{{ item.desc }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="seccion">
+    <div class="header-historial">
+      <h3>Historial de Reciclaje</h3>
+      <a routerLink="/captura" class="btn-nuevo-escaneo">+ Escanear Nuevo</a>
+    </div>
+
+    <div class="historial-lista">
+      <div class="historial-item" *ngFor="let item of historial">
+        <div class="item-main">
+          <span class="item-icono">{{ item.icono }}</span>
+          <div>
+            <h4>{{ item.material }}</h4>
+            <span class="item-fecha">{{ item.fecha }}</span>
+          </div>
+        </div>
+        <span class="item-puntos">+{{ item.puntos }} pts</span>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,12 +1,19 @@
 <section class="resultados-container" *ngIf="resultado">
-  <div class="resultados-grid-layout">
-    <!-- COLUMNA IZQUIERDA: Textos y Resultados -->
-    <div class="columna-izquierda">
-      <div class="resultado-header">
-        <h2>Resultado del Análisis</h2>
-        <p>Identificamos tu residuo e ideamos sugerencias para su reutilización.</p>
-      </div>
+  <div class="resultado-header">
+    <h2>Resultado del Análisis</h2>
+    <p>Identificamos tu residuo e ideamos sugerencias para su reutilización.</p>
+  </div>
 
+  <div class="resultados-grid-layout">
+    <!-- COLUMNA IZQUIERDA: Imagen del residuo -->
+    <div class="columna-izquierda" *ngIf="resultado.imagen">
+      <div class="imagen-box">
+        <img [src]="resultado.imagen" alt="Foto del residuo" class="imagen-escaneada" />
+        <span class="badge-imagen">Objeto Analizado</span>
+      </div>
+    </div>
+    
+    <div class="columna-derecha">
       <div class="material-card">
         <div class="badges-container">
           <span class="badge">Material Detectado</span>
@@ -55,12 +62,6 @@
         <button class="btn-secondary" (click)="volverACapturar()">
           Escanear otro objeto
         </button>
-      </div>
-    </div>
-
-    <div class="columna-derecha" *ngIf="resultado.imagen">
-      <div class="imagen-box">
-        <img [src]="resultado.imagen" alt="Foto del residuo" class="imagen-escaneada" />
       </div>
     </div>
   </div>

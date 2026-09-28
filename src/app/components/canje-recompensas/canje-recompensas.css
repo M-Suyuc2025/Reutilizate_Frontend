@@ -1,6 +1,6 @@
 .canje-container {
   max-width: 1000px;
-  margin: 3rem auto;
+  margin: 2.5rem auto;
   padding: 0 1.5rem;
   font-family: system-ui, -apple-system, sans-serif;
 }
@@ -11,67 +11,116 @@
 }
 
 .canje-header h2 {
-  color: #2e7d32;
-  font-size: 2rem;
+  color: #1F5C3F; /* Verde Principal Reutilízate */
+  font-size: 2.2rem;
   font-weight: 700;
+  margin-bottom: 0.5rem;
 }
 
 .canje-header p {
   color: #64748b;
+  font-size: 1rem;
+}
+
+.puntos-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #e8f5e9;
+  border: 1px solid #4E9F73;
+  color: #1F5C3F;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  margin-top: 1rem;
+  font-size: 1.05rem;
+}
+
+.puntos-banner strong {
+  color: #1F5C3F;
+  font-size: 1.2rem;
 }
 
 .recompensas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  gap: 1.8rem;
 }
 
 .recompensa-card {
-  background: white;
+  background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 1.8rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.recompensa-badge {
-  background: #fef3c7;
-  color: #d97706;
-  font-weight: 700;
-  font-size: 0.8rem;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  align-self: flex-start;
+.recompensa-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
+.recompensa-badge {
+  background: #fff8e1;
+  color: #d97706;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  border: 1px solid #fef3c7;
+}
+
+.categoria-tag {
+  font-size: 0.75rem;
+  color: #4E9F73;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 .recompensa-card h3 {
-  color: #1e293b;
-  margin: 0 0 0.5rem;
-  font-size: 1.2rem;
+  color: #1F5C3F;
+  margin: 0 0 0.6rem;
+  font-size: 1.25rem;
 }
 
 .recompensa-card p {
   color: #64748b;
-  font-size: 0.9rem;
-  line-height: 1.4;
+  font-size: 0.92rem;
+  line-height: 1.5;
   margin-bottom: 1.5rem;
 }
 
 .btn-canjear {
-  background-color: #2e7d32;
-  color: white;
+  background-color: #F2A93B; /* Color de Acento Cálido Reutilízate */
+  color: #1F5C3F;
   border: none;
-  padding: 0.75rem;
-  border-radius: 8px;
+  padding: 0.8rem;
+  border-radius: 10px;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
+  width: 100%;
 }
 
-.btn-canjear:hover {
-  background-color: #1b5e20;
+.btn-canjear:hover:not(.disabled) {
+  background-color: #e09328;
+  transform: scale(1.01);
+}
+
+.btn-canjear.disabled,
+.btn-canjear:disabled {
+  background-color: #e2e8f0;
+  color: #94a3b8;
+  cursor: not-allowed;
 }
