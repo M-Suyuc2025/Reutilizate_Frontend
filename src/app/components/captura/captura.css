@@ -98,3 +98,19 @@
   background-color: #cbd5e1;
   cursor: not-allowed;
 }
+.error-msg {
+  color: #b3261e;
+  background: #fdecea;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  margin: 1rem 0 0;
+  text-align: center;
+}
+.aviso-sesion {
+  color: #1f5c3f;
+  background: #e8f4ec;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  margin: 1rem 0 0;
+  text-align: center;
+}

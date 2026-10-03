@@ -1,9 +1,8 @@
+// Contrato con el backend: POST /api/auth/login y /api/auth/register
 export interface Usuario {
-  id: string;
-  nombre: string;
+  id: number;
+  name: string;
   email: string;
-  puntos: number;
-  fechaRegistro?: string;
 }
 
 export interface Credenciales {
@@ -16,6 +15,7 @@ export interface RegistroUsuario extends Credenciales {
 }
 
 export interface RespuestaAuth {
+  message: string;
   token: string;
-  usuario: Usuario;
+  user: Usuario;
 }

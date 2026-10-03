@@ -1,11 +1,12 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { materialEs } from '../../models/api.model';
 
 @Component({
   selector: 'app-resultados',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './resultados.html',
   styleUrl: './resultados.css',
 })
@@ -32,6 +33,14 @@ export class Resultados implements OnInit {
     if (!this.resultado) {
       this.router.navigate(['/captura']);
     }
+  }
+
+  get material(): { nombre: string; icono: string } {
+    return materialEs(this.resultado?.material);
+  }
+
+  get confianza(): number {
+    return Math.round((this.resultado?.confidence ?? 0) * 100);
   }
 
   volverACapturar(): void {

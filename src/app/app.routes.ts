@@ -6,6 +6,7 @@ import { Login } from './components/login/login';
 import { Registro } from './components/registro/registro';
 import { PerfilPuntos } from './components/perfil-puntos/perfil-puntos';
 import { CanjeRecompensas } from './components/canje-recompensas/canje-recompensas';
+import { authGuard } from './services/auth.guard';
 
 export const routes: Routes = [
   { path: '', component: Inicio },
@@ -13,7 +14,7 @@ export const routes: Routes = [
   { path: 'resultados', component: Resultados },
   { path: 'login', component: Login },
   { path: 'registro', component: Registro },
-  { path: 'puntos', component: PerfilPuntos },
-  { path: 'canje', component: CanjeRecompensas },
+  { path: 'puntos', component: PerfilPuntos, canActivate: [authGuard] },
+  { path: 'canje', component: CanjeRecompensas, canActivate: [authGuard] },
   { path: '**', redirectTo: '' }
 ];

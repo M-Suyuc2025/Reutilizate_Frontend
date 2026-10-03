@@ -9,22 +9,25 @@
     </div>
   </div>
 
+  <p class="mensaje exito" *ngIf="exitoMensaje">{{ exitoMensaje }}</p>
+  <p class="mensaje error" *ngIf="errorMensaje">{{ errorMensaje }}</p>
+  <p class="mensaje" *ngIf="cargando">Cargando recompensas...</p>
+
   <div class="recompensas-grid">
     <div class="recompensa-card" *ngFor="let recompensa of recompensas">
       <div class="card-top">
-        <span class="recompensa-badge">{{ recompensa.puntos }} Puntos</span>
-        <span class="categoria-tag">{{ recompensa.categoria }}</span>
+        <span class="recompensa-badge">{{ recompensa.costPoints }} Puntos</span>
       </div>
       
-      <h3>{{ recompensa.titulo }}</h3>
-      <p>{{ recompensa.descripcion }}</p>
+      <h3>{{ recompensa.name }}</h3>
+      <p>{{ recompensa.description }}</p>
 
       <button 
         class="btn-canjear" 
         (click)="canjearPremio(recompensa)"
-        [disabled]="puntosUsuario < recompensa.puntos"
-        [class.disabled]="puntosUsuario < recompensa.puntos">
-        {{ puntosUsuario >= recompensa.puntos ? 'Canjear Premio' : 'Puntos Insuficientes' }}
+        [disabled]="puntosUsuario < recompensa.costPoints || canjeandoId !== null"
+        [class.disabled]="puntosUsuario < recompensa.costPoints">
+        {{ puntosUsuario >= recompensa.costPoints ? 'Canjear Premio' : 'Puntos Insuficientes' }}
       </button>
     </div>
   </div>

@@ -1,4 +1,6 @@
 <div class="puntos-container">
+  <p class="error-msg" *ngIf="errorMensaje">{{ errorMensaje }}</p>
+  <p class="estado-vacio" *ngIf="cargando">Cargando tus datos...</p>
   
   <div class="card-perfil">
     <div class="usuario-info">
@@ -12,8 +14,8 @@
         <h3 class="stat-value">{{ usuario.puntosTotales }} <span class="pts">PTS</span></h3>
       </div>
       <div class="stat-card">
-        <span class="stat-label">Material Reciclado</span>
-        <h3 class="stat-value">{{ usuario.impactoKg }} <span class="unit">kg</span></h3>
+        <span class="stat-label">Reciclajes Realizados</span>
+        <h3 class="stat-value">{{ usuario.totalReciclajes }} <span class="unit">veces</span></h3>
       </div>
     </div>
   </div>
@@ -41,6 +43,10 @@
       <h3>Historial de Reciclaje</h3>
       <a routerLink="/captura" class="btn-nuevo-escaneo">+ Escanear Nuevo</a>
     </div>
+
+    <p class="estado-vacio" *ngIf="!cargando && !errorMensaje && historial.length === 0">
+      Aún no tienes reciclajes. ¡Escanea tu primer objeto!
+    </p>
 
     <div class="historial-lista">
       <div class="historial-item" *ngFor="let item of historial">

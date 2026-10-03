@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component , inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api';
 import { AuthService } from '../../services/auth';
+import { mensajeError } from '../../models/api.model';
 
 function passwordsIgualesValidator(control: AbstractControl): ValidationErrors | null {
   const password = control.get('password')?.value;
@@ -19,6 +20,7 @@ function passwordsIgualesValidator(control: AbstractControl): ValidationErrors |
   styleUrl: './registro.css'
 })
 export class Registro {
+  private cdr = inject(ChangeDetectorRef);
   registroForm: FormGroup;
   cargando = false;
   errorMensaje = '';
@@ -50,13 +52,15 @@ export class Registro {
 
     this.apiService.registrar({ nombre, email, password }).subscribe({
       next: (respuesta) => {
-        this.authService.guardarSesion(respuesta.token, respuesta.usuario);
+        this.authService.guardarSesion(respuesta.token, respuesta.user);
         this.cargando = false;
+        this.cdr.markForCheck();
         this.router.navigate(['/']);
       },
       error: (err) => {
-        this.errorMensaje = 'Ocurrió un error al registrarte. Intenta de nuevo.';
+        this.errorMensaje = mensajeError(err, 'No se pudo conectar con el servidor.');
         this.cargando = false;
+        this.cdr.markForCheck();
       }
     });
   }
