@@ -16,45 +16,32 @@
     <div class="columna-derecha">
       <div class="material-card">
         <div class="badges-container">
-          <span class="badge">Material Detectado</span>
-          <span class="badge-puntos">+50 Puntos Ganados</span>
+          <span class="badge">Material Detectado · {{ confianza }}% de confianza</span>
+          <span class="badge-puntos" *ngIf="resultado.saved">+{{ resultado.pointsEarned }} Puntos Ganados</span>
         </div>
-        <h3>{{ resultado.material || 'Botella de Plástico (PET)' }}</h3>
-        <p class="material-desc">
-          {{ resultado.descripcion || 'El plástico PET es altamente reciclable. Reutilizarlo reduce la contaminación ambiental y permite crear objetos funcionales para el hogar.' }}
+        <h3>{{ material.icono }} {{ material.nombre }}</h3>
+        <p class="material-desc" *ngIf="resultado.saved">
+          Tu reciclaje quedó registrado y ya suma en tu historial de puntos.
+        </p>
+        <p class="material-desc" *ngIf="!resultado.saved">
+          Este material valdría {{ resultado.pointsEarned }} puntos.
+          <a routerLink="/login">Inicia sesión</a> para guardar tus reciclajes, acumular puntos y ver ideas de reutilización.
         </p>
       </div>
 
-      <div class="proyectos-seccion">
+      <div class="proyectos-seccion" *ngIf="resultado.reuseIdeas?.length">
         <h3>Proyectos Recomendados</h3>
         <div class="proyectos-grid">
-          <!-- Si vienen proyectos dinámicos desde la captura -->
-          <ng-container *ngIf="resultado.proyectos && resultado.proyectos.length > 0; else proyectosEstaticos">
-            <div class="proyecto-card" *ngFor="let p of resultado.proyectos">
-              <div class="proyecto-header">
-                <h4>{{ p.nombre }}</h4>
-                <span class="dificultad">{{ p.dificultad }}</span>
-              </div>
-              <p>{{ p.descripcion }}</p>
+          <div class="proyecto-card" *ngFor="let idea of resultado.reuseIdeas">
+            <div class="proyecto-header">
+              <h4>{{ idea.title }}</h4>
+              <span class="dificultad">{{ idea.difficulty }}</span>
             </div>
-          </ng-container>
-
-          <ng-template #proyectosEstaticos>
-            <div class="proyecto-card">
-              <div class="proyecto-header">
-                <h4>🌱 Macetero Colgante</h4>
-                <span class="dificultad fácil">Fácil</span>
-              </div>
-              <p>Transforma tu botella en una maceta ecológica ideal para plantas pequeñas o hierbas.</p>
-            </div>
-            <div class="proyecto-card">
-              <div class="proyecto-header">
-                <h4>✏️ Organizador de Escritorio</h4>
-                <span class="dificultad fácil">Fácil</span>
-              </div>
-              <p>Corta la base de la botella para crear un contenedor útil para lápices y accesorios.</p>
-            </div>
-          </ng-template>
+            <p>{{ idea.description }}</p>
+            <ol class="pasos" *ngIf="idea.steps?.length">
+              <li *ngFor="let paso of idea.steps">{{ paso }}</li>
+            </ol>
+          </div>
         </div>
       </div>
 

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component , inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api';
 import { AuthService } from '../../services/auth';
+import { mensajeError } from '../../models/api.model';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ import { AuthService } from '../../services/auth';
   styleUrl: './login.css'
 })
 export class Login {
+  private cdr = inject(ChangeDetectorRef);
   loginForm: FormGroup;
   cargando = false;
   errorMensaje = '';
@@ -40,13 +42,15 @@ export class Login {
 
     this.apiService.login(this.loginForm.value).subscribe({
       next: (respuesta) => {
-        this.authService.guardarSesion(respuesta.token, respuesta.usuario);
+        this.authService.guardarSesion(respuesta.token, respuesta.user);
         this.cargando = false;
+        this.cdr.markForCheck();
         this.router.navigate(['/']);
       },
       error: (err) => {
-        this.errorMensaje = 'Credenciales incorrectas. Intenta de nuevo.';
+        this.errorMensaje = mensajeError(err, 'No se pudo conectar con el servidor.');
         this.cargando = false;
+        this.cdr.markForCheck();
       }
     });
   }
