@@ -124,3 +124,12 @@
   color: #94a3b8;
   cursor: not-allowed;
 }
+.mensaje {
+  text-align: center;
+  padding: 0.7rem 1rem;
+  margin: 1rem auto;
+  max-width: 700px;
+  border-radius: 8px;
+}
+.mensaje.exito { color: #1f5c3f; background: #e8f4ec; }
+.mensaje.error { color: #b3261e; background: #fdecea; }
